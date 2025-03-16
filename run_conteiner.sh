@@ -1,30 +1,17 @@
 
-
-# #!/bin/bash
-
-# # Detener y eliminar contenedor anterior si existe
-# docker rm -f django-dev-container 2>/dev/null || true
-
-# docker build -t django-libraries-env .
-
-# # Ejecutar contenedor nuevo con montaje del directorio completo
-# docker run -it \
-#     --name django-dev-container \
-#     -v "$(pwd)":/app \
-#     -p 8000:8000 \
-#     django-libraries-env
+# * Run the docker-compose file
+docker-compose up --build -d
 
 
-#!/bin/bash
+# * run the docker container
+docker exec -it 42-django-1-sql-backend-1 /bin/zsh
 
-# Detener y eliminar contenedor anterior si existe
-docker rm -f django-2-sql-container 2>/dev/null || true
 
-docker build -t django-2-sql .
+# ? Run the postgresql container
+docker exec -it postgres-db /bin/sh 
 
-# Ejecutar contenedor nuevo con montaje del directorio completo
-docker run -it \
-    --name django-2-sql-container \
-    -v "$(pwd)":/app \
-    -p 8000:8000 \
-    django-2-sql
+# ? run informacion de la base de datos
+# psql -U user -d ex00
+# \dt -> show tables
+# \d table_name -> show columns of table 
+# \c ex00 -> connect to database ex00

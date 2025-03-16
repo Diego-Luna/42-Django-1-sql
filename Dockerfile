@@ -29,5 +29,14 @@ RUN chsh -s /usr/bin/zsh root
 # Crear directorio de trabajo
 WORKDIR /app
 
+# Copiar archivos necesarios
+COPY requirements.txt .
+
+# Instalar dependencias
+RUN pip install -r requirements.txt
+
+# Copiar el resto del código de la aplicación
+COPY . .
+
 # Comando por defecto al iniciar el contenedor
-CMD ["zsh"]
+CMD ["tail", "-f", "/dev/null"]
