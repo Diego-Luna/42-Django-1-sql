@@ -1,6 +1,8 @@
 from django.shortcuts import HttpResponse
-from .addTable import TableValue, ErrorInDatabase
+from django.shortcuts import render
 import psycopg2
+
+from .addTable import TableValue, ErrorInDatabase
 
 # Create your views here.
 
@@ -8,7 +10,6 @@ import psycopg2
 def init(request):
     try:
 
-        # conn = psycopg2.connect("dbname=ex00 user=user")
         conn = psycopg2.connect(
             dbname="ex00",
             user="user",
@@ -92,8 +93,8 @@ def populate(request):
     returnValue = ""
     for value in data:
         try:
-            value.save("ex00_movies")
-            returnValue += "OK<br>"
+            value.save("ex04_movies")
+            returnValue += "<br>OK"
         except ErrorInDatabase as e:
             returnValue += "<br> Error: {}".format(e)
 
@@ -111,7 +112,7 @@ def display(request):
             )
 
         cur = conn.cursor()
-        cur.execute("""SELECT * FROM ex00_movies;""")
+        cur.execute("""SELECT * FROM ex04_movies;""")
         test = cur.fetchall()
 
         conn.commit()
@@ -148,15 +149,27 @@ def remove(request):
             password="queso",
             host="database",
             port="5432"
-            )
-
+        )
         cur = conn.cursor()
-        cur.execute("""DROP TABLE IF EXISTS ex00_movies;""")
-        conn.commit()
+        
+        # If form was submitted
+        if request.method == 'POST' and 'remove' in request.POST:
+            title = request.POST.get('title')
+            if title:
+                cur.execute("DELETE FROM ex04_movies WHERE title = %s;", (title,))
+                conn.commit()
+        
+        # Get remaining movie titles for dropdown
+        cur.execute("SELECT title FROM ex04_movies ORDER BY episode_nb;")
+        movies = cur.fetchall()
+        
         cur.close()
         conn.close()
-
-        return HttpResponse('Ok')
+        
+        if not movies:
+            return HttpResponse("No data available")
+        
+        return render(request, 'ex04_remove.html', {'movies': movies})
     except Exception as e:
-        return HttpResponse("Error: {}".format(e))
+        return HttpResponse("No data available")
 

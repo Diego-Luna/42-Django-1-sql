@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Remove Movie</title>
+</head>
+<body>
+    <form action="/ex04/remove" method="post">
+        {% csrf_token %}
+        <select name="title">
+            {% for movie in movies %}
+                <option value="{{ movie.0 }}">{{ movie.0 }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" name="remove" value="Remove">
+    </form>
+</body>
+</html>
+
