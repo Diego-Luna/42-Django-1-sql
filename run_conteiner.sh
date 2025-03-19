@@ -20,7 +20,7 @@ docker exec -it postgres-db /bin/sh
 # \c ex00 -> connect to database ex00
 
 # ? run the migrations
-python3 manage.py makemigrations ex03
-python3 manage.py migrate 
+# python3 manage.py makemigrations ex03
+# python3 manage.py migrate 
 
 # python3 manage.py flush

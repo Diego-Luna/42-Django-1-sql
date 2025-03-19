@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Remove Movie EX004</title>
+    <title>Remove Movie EX005</title>
 </head>
 <body>
-    <h1>EX004</h1>
-    <form action="/ex04/remove" method="post">
+    <h1>EX005</h1>
+    <form action="/ex05/remove" method="post">
         {% csrf_token %}
         <select name="title">
             {% for movie in movies %}
-                <option value="{{ movie.0 }}">{{ movie.0 }}</option>
+                <option value="{{ movie.title }}">{{ movie.title }}</option>
             {% endfor %}
         </select>
         <input type="submit" name="remove" value="Remove">
