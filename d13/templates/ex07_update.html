@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>update Movie EX07</title>
+    <title>Update Movie EX07</title>
 </head>
 <body>
     <h1>EX007</h1>
-    <form action="/ex06/update" method="post">
+    <form action="/ex07/update" method="post">
         {% csrf_token %}
        <div>
             <label for="title">Select Movie</label>
@@ -16,11 +16,10 @@
             </select>
        </div>
         <div>
-            <label for="opening_crawl">opening_crawl</label>
-            <input type="text" name="opening_crawl" id="opening_crawl">
+            <label for="opening_crawl">Opening Crawl</label>
+            <input name="opening_crawl" id="opening_crawl">
         </div>
-        <input type="submit" name="update" value="update">
+        <input type="submit" name="update" value="Update">
     </form>
 </body>
 </html>
-

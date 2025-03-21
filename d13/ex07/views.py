@@ -95,6 +95,8 @@ def display(request):
             result += "<td>{}</td>".format(row.director)
             result += "<td>{}</td>".format(row.producer)
             result += "<td>{}</td>".format(row.release_date)
+            result += "<td>{}</td>".format(row.created)
+            result += "<td>{}</td>".format(row.updated)
             result += "</tr>"
         result += "</table>"
 
@@ -103,23 +105,23 @@ def display(request):
         return HttpResponse("No data available")
 
 
-def remove(request):
+def update(request):
     try:
-        
-        # * If form was submitted
-        if request.method == 'POST' and 'remove' in request.POST:
+        # * Si se envió el formulario
+        if request.method == 'POST' and 'update' in request.POST:
             title = request.POST.get('title')
+            opening_crawl = request.POST.get('opening_crawl')
             if title:
                 movie = Movies.objects.get(title=title)
-                movie.delete()
+                movie.opening_crawl = opening_crawl
+                movie.save()
         
-        # * Get remaining movie titles for dropdown
+        # ! Obtener todas las películas para el menú desplegable
         movies = Movies.objects.all().order_by('episode_nb')
         
         if not movies:
             return HttpResponse("No data available")
         
-        # ! important is nesesari use .title for get title
-        return render(request, 'ex05_remove.html', {'movies': movies})
+        return render(request, 'ex07_update.html', {'movies': movies})
     except Exception as e:
         return HttpResponse("No data available")

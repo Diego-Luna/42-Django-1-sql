@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 class Movies(models.Model):
@@ -8,6 +9,8 @@ class Movies(models.Model):
     director = models.CharField(max_length=32, null=False)
     producer = models.CharField(max_length=128, null=False)
     release_date = models.DateField(null=False)
+    created = models.DateTimeField(default=timezone.now)
+    updated = models.DateTimeField(auto_now=True)
     
     def __str__(self):
         return self.title
