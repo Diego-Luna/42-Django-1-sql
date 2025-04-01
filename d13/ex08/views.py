@@ -2,7 +2,7 @@ from django.shortcuts import HttpResponse
 from django.shortcuts import render
 import psycopg2
 
-from .addTable import TableValue, ErrorInDatabase
+# from .addTable import TableValue, ErrorInDatabase
 
 name_table_1 = "ex08_planets"
 name_table_2 = "ex08_people"
