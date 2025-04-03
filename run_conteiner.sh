@@ -24,3 +24,17 @@ docker exec -it postgres-db /bin/sh
 # python3 manage.py migrate 
 
 # python3 manage.py flush
+
+# ? add date in de database
+
+# python3 manage.py loaddata ../ex09_initial_data.json
+
+# ? Clean de database
+# python3 manage.py shell
+# * Para eliminar todos los datos
+# from ex09.models import People, Planets
+# People.objects.all().delete()
+# Planets.objects.all().delete()
+# * Para verificar
+# People.objects.count()  # Debería devolver 0
+# Planets.objects.count()  # Debería devolver 0
