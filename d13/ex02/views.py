@@ -18,7 +18,7 @@ def init(request):
             )
 
         cur = conn.cursor()
-        cur.execute("""CREATE TABLE IF NOT EXISTS ex00_movies (
+        cur.execute("""CREATE TABLE IF NOT EXISTS ex02_movies (
             title varchar(64) UNIQUE NOT NULL,\
             episode_nb serial PRIMARY KEY,
             opening_crawl text, 
@@ -92,7 +92,7 @@ def populate(request):
     returnValue = ""
     for value in data:
         try:
-            value.save("ex00_movies")
+            value.save("ex02_movies")
             returnValue += "OK<br>"
         except ErrorInDatabase as e:
             returnValue += "<br> Error: {}".format(e)
@@ -111,7 +111,7 @@ def display(request):
             )
 
         cur = conn.cursor()
-        cur.execute("""SELECT * FROM ex00_movies;""")
+        cur.execute("""SELECT * FROM ex02_movies;""")
         test = cur.fetchall()
 
         conn.commit()

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ex10 - Search Results</title>
+    <style>
+        body { 
+            margin: 20px; 
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+        th, td { 
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th { 
+            background-color: green; 
+            color: white;
+            transition: all  ease;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+            border : 3px solid green;
+            color: green;
+            transform: scale(1.005);
+        }
+        .no-results {
+            margin: 20px 0;
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 16px;
+            background-color: blue;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .back-link:hover {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search Results</h1>
+    
+    <h2>Search Criteria</h2>
+    <p>
+        <strong>Movies release date:</strong> From {{ min_date }} to {{ max_date }}<br>
+        <strong>Planet diameter greater than:</strong> {{ min_diameter }}<br>
+        <strong>Character gender:</strong> {{ gender }}
+    </p>
+    
+    {% if results %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Film Title</th>
+                    <th>Character Name</th>
+                    <th>Gender</th>
+                    <th>Homeworld</th>
+                    <th>Homeworld Diameter</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                <tr>
+                    <td>{{ result.movie_title }}</td>
+                    <td>{{ result.character_name }}</td>
+                    <td>{{ result.gender }}</td>
+                    <td>{{ result.homeworld_name }}</td>
+                    <td>{{ result.homeworld_diameter }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="no-results">Nothing corresponding to your research</p>
+    {% endif %}
+    
+    <a href="{% url 'index' %}" class="back-link">New Search</a>
+</body>
+</html>
