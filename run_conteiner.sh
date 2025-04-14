@@ -1,6 +1,6 @@
 
 # * Run the docker-compose file
-docker-compose up --build -d
+docker compose up --build -d
 
 
 # * run the docker container
