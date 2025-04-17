@@ -10,9 +10,9 @@ services:
     ports:
       - "5433:5432"
     environment:
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=queso
-      - POSTGRES_DB=ex00
+      - POSTGRES_USER=djangouser
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=djangotraining
 
   backend:
     container_name: 42-django-1-sql-backend-1

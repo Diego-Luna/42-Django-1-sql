@@ -38,3 +38,8 @@ docker exec -it postgres-db /bin/sh
 # * Para verificar
 # People.objects.count()  # Debería devolver 0
 # Planets.objects.count()  # Debería devolver 0
+
+
+
+
+# ? run the 

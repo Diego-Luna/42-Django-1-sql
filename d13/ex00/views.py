@@ -9,9 +9,9 @@ def init(request):
 
         # conn = psycopg2.connect("dbname=ex00 user=user")
         conn = psycopg2.connect(
-            dbname="ex00",
-            user="user",
-            password="queso",
+            dbname="djangotraining",
+            user="djangouser",
+            password="secret",
             host="database",
             port="5432"
             )

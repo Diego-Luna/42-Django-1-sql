@@ -11,9 +11,9 @@ name_table_2 = "ex08_people"
 def init(request):
     try:
         conn = psycopg2.connect(
-            dbname="ex00",
-            user="user",
-            password="queso",
+            dbname="djangotraining",
+            user="djangouser",
+            password="secret",
             host="database",
             port="5432"
         )
@@ -57,9 +57,9 @@ def init(request):
 def populate(request):
     try:
         conn = psycopg2.connect(
-            dbname="ex00",
-            user="user",
-            password="queso",
+            dbname="djangotraining",
+            user="djangouser",
+            password="secret",
             host="database",
             port="5432"
         )
@@ -145,9 +145,9 @@ def populate(request):
 def display(request):
     try:
         conn = psycopg2.connect(
-            dbname="ex00",
-            user="user",
-            password="queso",
+            dbname="djangotraining",
+            user="djangouser",
+            password="secret",
             host="database",
             port="5432"
         )

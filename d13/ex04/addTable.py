@@ -20,9 +20,9 @@ class TableValue():
     def save(self, table_name):
         try:
             conn = psycopg2.connect(
-                    dbname="ex00",
-                    user="user",
-                    password="queso",
+                    dbname="djangotraining",
+                    user="djangouser",
+                    password="secret",
                     host="database",
                     port="5432"
                 )

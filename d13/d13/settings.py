@@ -89,9 +89,9 @@ WSGI_APPLICATION = 'd13.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ex00',
-        'USER': 'user',
-        'PASSWORD': 'queso',
+        'NAME': 'djangotraining',
+        'USER': 'djangouser',
+        'PASSWORD': 'secret',
         'HOST': 'database',
         'PORT': '5432',
     }
