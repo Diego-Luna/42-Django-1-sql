@@ -57,8 +57,9 @@ def display(request):
             return HttpResponse(result)
         
         # Si no hay datos, mostrar instrucciones
+        command = "python3 manage.py loaddata ../ex09_initial_data.json"
         if not people:
-            return HttpResponse("No data available")
+            return HttpResponse(f"No data available, please use the following command line before use:<br>{command}")
         
         # Si hay personas en planetas windy, mostrar como se requiere
         result = "<table border='1'>"
