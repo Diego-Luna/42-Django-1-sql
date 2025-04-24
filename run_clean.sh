@@ -7,7 +7,7 @@ docker stop $(docker ps -aq) 2>/dev/null || true
 docker rm $(docker ps -aq) 2>/dev/null || true
 
 # Eliminar los contenedores y volúmenes del proyecto
-docker-compose down -v
+docker compose down -v
 
 # Eliminar imágenes no utilizadas
 docker image prune -f
